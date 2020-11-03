@@ -25,7 +25,7 @@ public class PiratesStep1 {
 	 * Declare the objects and variables that you want to access across
 	 * multiple methods.
 	 */
-	
+
 
 
 	/**
@@ -39,10 +39,62 @@ public class PiratesStep1 {
 		frame.setResizable (false);
 
 		// The panel that will hold the components in the frame.
-		JPanel contentPane = new JPanel ();
 
-		// TODO: Add the components to the view
+		JPanel contentPane = new JPanel ();
+		contentPane.setPreferredSize(new Dimension(950,400));
+		contentPane.setLayout(new BorderLayout());
+
+		//Create reaction panel 
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
+		contentPane.add(rightPanel, BorderLayout.EAST);
+
+		// Creating  Score JLabels 
 		
+		JLabel scoreTitleLabel = new JLabel ("Score");
+		scoreTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(scoreTitleLabel);
+		
+		JLabel scoreNumberLabel = new JLabel ("0");
+		scoreNumberLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(scoreNumberLabel);
+		
+		// Add action buttons 
+		JLabel actionsTitleLabel = new JLabel ("Actions");
+		actionsTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(actionsTitleLabel);
+		
+		JButton newGameButton = new JButton ("New Game");
+		newGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(newGameButton);
+		
+		JButton musicButton = new JButton ("Music Off");
+		rightPanel.add(musicButton);
+		musicButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JButton quitButton = new JButton ("Quit ");
+		quitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(quitButton);
+		
+		//Add the Map 
+		JLayeredPane gamePane1 = new JLayeredPane();
+		contentPane.add(gamePane1);
+		
+		JLabel mapImage = new JLabel (new ImageIcon("resources/world-map-animals.jpg"));
+		mapImage.setSize(775,400);
+		gamePane1.add(mapImage);
+		
+		//add the pirate ship
+		JLabel shipImage = createScaledImage("resources/pirate-ship.png", 40 , 40);
+		shipImage.setSize(40, 40);
+		gamePane1.add(shipImage , Integer.valueOf(100));
+		//put ship at location 
+		Random randomGenerator = new Random();
+		int pirateX = randomGenerator.nextInt(735);
+		int pirateY = randomGenerator.nextInt(360);
+		shipImage.setLocation(pirateX, pirateY);
+		// TODO: Add the components to the view
+
 
 		// Add the panel to the frame
 		frame.setContentPane(contentPane);
@@ -72,5 +124,5 @@ public class PiratesStep1 {
 	 * Subclasses that handle events (button clicks, mouse clicks and moves,
 	 * key presses, timer expirations)
 	 */
-	
+
 }
